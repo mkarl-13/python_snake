@@ -1,6 +1,7 @@
 import pygame
-from settings import DEFAULT_SNAKE, DEFAULT_COLORS, GRID_SIZE, CELL_SIZE
+from settings import DEFAULT_SNAKE, GRID_SIZE, CELL_SIZE
 from point import Point
+from colors import DEFAULT_COLORS
 
 class Snake:
     def __init__(self, food):
@@ -32,10 +33,10 @@ class Snake:
         self.CheckFood()
         self.CheckCollision()
 
-    def Render(self, surf):
+    def Render(self, surf, colors):
         for segment in self.segments:
-            pygame.draw.rect(surf, DEFAULT_COLORS["body"], (segment.x * CELL_SIZE.x, segment.y * CELL_SIZE.y, CELL_SIZE.x, CELL_SIZE.y))
-        pygame.draw.rect(surf, DEFAULT_COLORS["head"], (self.pos.x * CELL_SIZE.x, self.pos.y * CELL_SIZE.y, CELL_SIZE.x, CELL_SIZE.y))
+            pygame.draw.rect(surf, colors[DEFAULT_COLORS["SNAKE_BODY"]], (segment.x * CELL_SIZE.x, segment.y * CELL_SIZE.y, CELL_SIZE.x, CELL_SIZE.y))
+        pygame.draw.rect(surf, colors[DEFAULT_COLORS["SNAKE_HEAD"]], (self.pos.x * CELL_SIZE.x, self.pos.y * CELL_SIZE.y, CELL_SIZE.x, CELL_SIZE.y))
         return
     
     def Move(self):
